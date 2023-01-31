@@ -1,4 +1,4 @@
-## Chapter 1: IoT
+## Chapter 1 : IoT
 Kevin Ashton, a tech pioneer, coined the term "Internet of Things" in 1999. The Internet of Things (IoT) is a term used to refer to a network of physical objects, or "things," that are equipped with sensors, software, and other technologies in order to communicate and exchange data with other systems and devices over the internet. These gadgets include everything from common household items to high-tech industrial tools. We frequently think of IoT devices as smart objects that can interact and exchange data over the Internet. Therefore, every device requires an Internet Protocol address in order to be uniquely identified, just like every home requires a postal address. The introduction of IPv6, which provides an almost infinite supply of IP addresses, appears to reinforce this viewpoint.
 
 
@@ -53,7 +53,7 @@ The location-enabled models of the SensorThings API enable sensor feeds from mul
 
 To know more about SensorThings API, look into this module to get an introduction.
 
-## Chapter 2: Internet Protocols
+## Chapter 2 : Internet Protocols
 
 #### How do IoT devices communicate with the web?
 
@@ -71,13 +71,20 @@ TCP/IP is one among these network protocols. We have a lot of technical words go
 ### What is an IP?
 A protocol, or set of guidelines, called the Internet Protocol (IP) is used to address and route data packets so they can move between networks and reach their intended location. The Internet divides data into smaller units known as packets for transmission. Every packet has an IP address attached to it, which enables routers to send packets to the appropriate location. Every device or domain that connects to the Internet is assigned an IP address, and data arrives where it is needed as packets are directed to the IP address assigned to them.  Each IP packet will include both the IP address of the device  and the IP address of the intended recipient, similar to how a piece of mail includes both the destination and return address.
 
-IP Address diagram
+<p align="center">
+  <img src='svg/IPaddress.svg' width='650'>
+</p>
 
 > Did you find out your IP Address?
 
 Once at their destination, packets are handled differently depending on which transport protocol is used in conjunction with IP. TCP is the most widely used transport protocol, which governs how data is transmitted and received.. The first version of IP (Internet Protocol) was IPv4. After IPv4, IPv6 came into the market, which has been increasingly used on the public internet since 2006.
 
+<p align="center">
+  <img src='svg/TCP.svg' width='650'>
+</p>
+
 ## To sum it up:
-Look into this diagram
+TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
+
 
 
