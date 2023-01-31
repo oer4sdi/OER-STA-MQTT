@@ -83,6 +83,21 @@ Once at their destination, packets are handled differently depending on which tr
   <img src='svg/TCP.svg' width='650'>
 </p>
 
+The TCP/IP model is split into four distinct layers. Used together, they can also be referred to as a suite of protocols.
+
+1. Datalink layer <br/>
+The datalink layer (also known as the link layer, network interface layer, or physical layer) is responsible for the physical aspects of sending and receiving data via Ethernet cable, wireless network, network interface card, computer device driver, and so on.
+
+2. Network layer <br/>
+The network layer (also called the internet layer) controls the movement of data packets around the network.
+
+3. Transport layer <br/>
+The transport layer is responsible for establishing a secure data connection between two devices. It divides the data into packets, acknowledges packets received from the other device, and ensures that the other device acknowledges packets received from it. This is referred to as end-to-end communication.
+
+4. Application layer <br/>
+The application layer includes all applications that require network communication. It defines standard Internet services and network applications that can be used by anyone. This is where the user usually interacts, such as with email and messaging.
+
+
 ## To sum it up:
 TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
 
