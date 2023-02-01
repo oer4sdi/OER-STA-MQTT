@@ -101,5 +101,69 @@ The application layer includes all applications that require network communicati
 ## To sum it up:
 TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IoT protocols are essential components of the IoT technology stack. Hardware would be useless without IoT protocols and standards. This is because IoT protocols enable communication—that is, the exchange of data or the sending of commands—among all of those various devices.  IoT protocols come in a variety of varieties that have been developed and optimised for specific uses. The type of IoT protocol required is determined by the system architecture layer through which the data will travel.
+
+## IoT Data Communication Protocols
+
+To connect low-power IoT devices, IoT data protocols are used. They allow users to communicate with hardware without the need for an internet connection. In IoT data protocols and standards, connectivity is accomplished via a wired or cellular network. Here are some examples of IoT data protocols:
+
+### HTTP
+> The Hypertext Transfer Protocol (HTTP) is an application-layer protocol used to send hypermedia documents like HTML. It was created to facilitate communication between web browsers and web servers, but it can be used for other purposes as well. 
+
+HTTP follows the traditional client-server model, with a client opening a connection to make a request and then waiting for a response. HTTP is a stateless protocol, which means that the server stores no data (state) between requests. However, in the context of IoT applications, HTTP has a number of disadvantages. For instance, this protocol creates a synchronous connection between two devices in order to transfer data, which poses several difficulties for IoT deployments because devices and endpoints might not be online simultaneously and connections might be unreliable due to network issues.
+
+We transferred our sensor data using HTTP application protocol in the previous course. In this module let’s use another application protocol which is MQTT
+
+### MQTT
+> MQTT (MQ Telemetry Transport) is a lightweight messaging protocol designed for Internet of Things (IoT) devices. MQTT is based on the publisher/subscriber model and is managed by a central broker. This means that there is no direct connection between the sender and the receiver. The data sources publish their data, and all recipients with an interest in specific messages receive the data because they have registered as subscribers.
+
+The MQTT protocol is supported by the SensorThings API in addition to the HTTP protocol, which improves the publish and subscribe capabilities of the SensorThings service. SensorThings MQTT adds the ability to create Observation entities via the MQTT protocol. Additionally, a client can send  a MQTT Subscribe request to sign up for notifications when certain entities are updated. MQTT publishers and subscribers are called MQTT clients.
+
+### What’s an MQTT Topic?
+MQTT topics are a type of addressing that allows MQTT clients to exchange data. MQTT Topics are organised in a hierarchical structure similar to folders and files in a file system, with the forward slash (/) serving as a delimiter.
++ The topics are case-sensitive. For instance, myhome/temperature and MyHome/temperature are two distinct topics. Furthermore, the slash is a topic in and of itself. 
++ Users can subscribe to a specific hierarchy level of a topic or use a wildcard (#) character to subscribe to multiple levels. For example, myhome/#
++ Topics that start with $ are not part of subscription
+
+### MQTT Client and Broker
+An MQTT client is any device that runs a MQTT library, ranging from a server to a microcontroller. One of the reasons MQTT is ideal for small devices is its ease of client implementation. The heart of every Publish/Subscribe protocol is the MQTT broker. A broker can manage thousands of MQTT clients at the same time, depending on the implementation. The functions of the broker are manifold:
++ The broker is in charge of receiving all messages, filtering them, determining who subscribed to each message, and sending the message to those clients who have subscribed. 
++ The Broker keeps track of all persistent clients' sessions, including subscriptions and missed messages. 
++ The Broker is also responsible for client authentication and authorization.
+Since, MQTT Broker handles a lot of clients and are frequently exposed to the internet, it is critical that any MQTT broker be highly scalable, easily integrated into backend systems, easy to monitor, and fail-safe.
+
+MQTT Diagram
+
+### MQTT Connection
+TCP/IP is the foundation of the MQTT protocol. A TCP/IP stack is required for both the client and the broker.
+The MQTT connection is always established between a single client and the broker. Clients are never directly connected to one another. A MQTT client can be a publisher as well as a subscriber depending on the use case.
+
+MQTT Message flow diagram
+
+The client sends a CONNECT message to the broker to initiate a connection. A CONNACK message and a status code are returned by the broker. Once the connection is established, the broker maintains it until the client sends a disconnect command or the connection is terminated. As soon as the client connects to a broker, a client can publish/subscribe to a topic. When a client sends a message to a MQTT broker for publication(PUBLISH), the broker reads it, acknowledges it by sending a PUBACK message to the client (based on the QoS Level), and processes it.
+
+Note: No information is provided to the publishing client by the broker regarding the number of clients who have seen the message or whether anyone is interested in it. It is the broker's responsibility to deliver the message to every subscriber after receiving the PUBLISH message.
+
+The client sends a SUBSCRIBE message to the MQTT broker to receive messages on topics of interest. This subscribe message is very straightforward; it includes a unique packet identifier as well as a list of subscriptions. As an acknowledgement for each subscription, the broker sends the client a SUBACK message. 
+
+We will look into the message workflows in more detail in the coming chapters.
+
+### How to publish/subscribe to a topic?
+
+MQTT employs topic-based message filtering on the broker. Each message must include a topic on which the broker can forward the message to interested clients. Each message typically has a payload that contains the data to be transmitted in byte format. Since, MQTT is data-independent, the sending client (publisher) chooses whether to send binary data, text data, or full-fledged XML or JSON. Messages can be sent with varying levels of Quality of Service (QoS):
+QoS diagram
+
+## To sum it up:
++ While HTTP is an excellent choice for transferring website data, it is not a good choice for an IoT application in general.
++ An MQTT broker's job is to filter messages by topic and then distribute them to subscribers.
++ A client can receive these messages by subscribing to the same broker's topic.
++ A publisher and a subscriber do not have a direct relationship.
++ All clients have the ability to publish (broadcast) and subscribe (receive).
++ Messages are not typically stored by MQTT brokers.
+
+
+
 
 
