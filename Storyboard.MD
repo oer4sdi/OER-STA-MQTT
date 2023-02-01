@@ -134,13 +134,17 @@ An MQTT client is any device that runs a MQTT library, ranging from a server to 
 + The Broker is also responsible for client authentication and authorization.
 Since, MQTT Broker handles a lot of clients and are frequently exposed to the internet, it is critical that any MQTT broker be highly scalable, easily integrated into backend systems, easy to monitor, and fail-safe.
 
-MQTT Diagram
+<p align="center">
+  <img src='svg/MQTT.svg' width='650'>
+</p>
 
 ### MQTT Connection
 TCP/IP is the foundation of the MQTT protocol. A TCP/IP stack is required for both the client and the broker.
 The MQTT connection is always established between a single client and the broker. Clients are never directly connected to one another. A MQTT client can be a publisher as well as a subscriber depending on the use case.
 
-MQTT Message flow diagram
+<p align="center">
+  <img src='svg/MQTT-msg.svg' width='650'>
+</p>
 
 The client sends a CONNECT message to the broker to initiate a connection. A CONNACK message and a status code are returned by the broker. Once the connection is established, the broker maintains it until the client sends a disconnect command or the connection is terminated. As soon as the client connects to a broker, a client can publish/subscribe to a topic. When a client sends a message to a MQTT broker for publication(PUBLISH), the broker reads it, acknowledges it by sending a PUBACK message to the client (based on the QoS Level), and processes it.
 
@@ -153,7 +157,10 @@ We will look into the message workflows in more detail in the coming chapters.
 ### How to publish/subscribe to a topic?
 
 MQTT employs topic-based message filtering on the broker. Each message must include a topic on which the broker can forward the message to interested clients. Each message typically has a payload that contains the data to be transmitted in byte format. Since, MQTT is data-independent, the sending client (publisher) chooses whether to send binary data, text data, or full-fledged XML or JSON. Messages can be sent with varying levels of Quality of Service (QoS):
-QoS diagram
+
+<p align="center">
+  <img src='svg/QoS.svg' width='650'>
+</p>
 
 ## To sum it up:
 + While HTTP is an excellent choice for transferring website data, it is not a good choice for an IoT application in general.
