@@ -170,6 +170,47 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 + All clients have the ability to publish (broadcast) and subscribe (receive).
 + Messages are not typically stored by MQTT brokers.
 
+## Chapter 3: Raspbi pi to sensor with node red tutorial
+
+Let us first create an IoT device that can sense temperature and humidity. For that we will use Node Red software.
+
+### Material Required
++ Raspberry Pi 3 with Raspbian OS installed
++ DHT11 Sensor
+
+### Step 1: How to setup Raspberry Pi 3
+1. Use this [guide](https://www.instructables.com/How-to-Setup-Raspberry-Pi-Without-Monitor-and-Keyb/) to setup your raspberry pi 3. You can also 
+Watch this easy tutorial to setup raspberry pi 3
+https://www.youtube.com/watch?v=u8bbp79haN4
+
+2. If you already configured raspberry pi without OS installed, with the help of raspberry pi imager you can install the OS: https://www.youtube.com/watch?v=ntaXWS8Lk34
+
+### Step 2: Install Node Red in Raspberry pi 3
+#### a) VNC installation
+For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal.
+
+To install VNC follow this official [Guide](https://raspberrypi-guide.github.io/networking/connecting-via-VNC)
+
+#### b) Nodered installation
+To install the Node-Red on Raspberry Pi, Open Terminal and execute the below command.
+
+> bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+
++ Once you execute the command, you’ll get a message where you have to press Y and Enter to accept.
++ Then, you will get another question which is 
+
+> “Would you like to install Pi-specific nodes?”
+
++ and again you have to press Y and Enter
++ After confirmation the Node-Red installation will start installing and will take time depending upon the Raspberry Pi configuration.
++ You can start your node-red using the command: **node-red-start**
+##### Node-red commands
+IMG
+
++ You can access the Node-Red portal using google chrome on browser which should be connected to the same network as Raspberry Pi is connected. Use the below format to open the Node-Red dashboard.
+> http://your_Raspberrypi_ip:1880/
+
+
 
 
 
