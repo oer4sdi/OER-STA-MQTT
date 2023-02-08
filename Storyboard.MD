@@ -175,40 +175,57 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 Let us first create an IoT device that can sense temperature and humidity. For that we will use Node Red software.
 
 ### Material Required
++ Laptop or PC system
 + Raspberry Pi 3 with Raspbian OS installed
 + DHT11 Sensor
 
+### Software Required
++ Rapsberry pi Imager
++ Node Red
++ VNC software
+
 ### Step 1: How to setup Raspberry Pi 3
-1. Use this [guide](https://www.instructables.com/How-to-Setup-Raspberry-Pi-Without-Monitor-and-Keyb/) to setup your raspberry pi 3. You can also 
-Watch this easy tutorial to setup raspberry pi 3
-https://www.youtube.com/watch?v=u8bbp79haN4
+Raspberry pi can be used with its own monitor, keyboard and mouse. Here, you won't be needing to use any setup.
 
-2. If you already configured raspberry pi without OS installed, with the help of raspberry pi imager you can install the OS: https://www.youtube.com/watch?v=ntaXWS8Lk34
+Watch this easy tutorial to setup raspberry pi 3 by M Heidenreich
 
-#### Step 2: Connect Raspberry pi 3 with DHT11 sensor
+[![Untitled presentation](https://user-images.githubusercontent.com/94603960/217582355-4291c209-45ca-4e1b-940d-1681f25d21b0.svg)](https://www.youtube.com/watch?v=u8bbp79haN4)
+
+You can refer to this [guide](https://www.instructables.com/How-to-Setup-Raspberry-Pi-Without-Monitor-and-Keyb/) to setup your raspberry pi 3 for indepth understanding. If you already configured raspberry pi without OS installed, with the help of raspberry pi [Imager](https://www.youtube.com/watch?v=ntaXWS8Lk34) you can install the OS
+
+### Step 2: Connect Raspberry pi 3 with DHT11 sensor
+
+https://user-images.githubusercontent.com/94603960/217584942-37875d8e-d7ef-4dd5-a67e-de3b9ecbd9da.mp4
 
 The Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects data and sends it to the Raspberry Pi.
 
-Video slide
-
-#### Step 3: Install Node Red in Raspberry pi 3
+### Step 3: Install Node Red in Raspberry pi 3
 1. VNC installation <br/>
 For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal.
 
-To do that install VNC: https://raspberrypi-guide.github.io/networking/connecting-via-VNC
+> To do that [install VNC](https://raspberrypi-guide.github.io/networking/connecting-via-VNC)
 
 2. Nodered installation <br/>
 To install the Node-Red on Raspberry Pi, Open Terminal and execute the below command.
 
+```
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+```
 
-Once you execute the command, you’ll get a message where you have to press Y and Enter to accept. Then, you will get another question which is 
-> “Would you like to install Pi-specific nodes?”
-and again you have to press Y and Enter. After confirmation the Node-Red installation will start installing and will take time depending upon the Raspberry Pi configuration. You can start your node-red using the command: **node-red-start**
+Once you execute the command, you’ll get a message where you have to press Y and Enter to accept. Then, you will get another question which makes sure that you are installing the correct libary, press Y and Enter. After confirmation the Node-Red installation will start and will take time depending upon the Raspberry Pi configuration. You can start your node-red using the command: **node-red-start**
 
 **Node-red commands** <br/>
-You can access the Node-Red portal using google chrome on the browser which should be connected to the same network as Raspberry Pi is connected. Use the below format to open the Node-Red dashboard.
++ node-red-start
++ node-red-stop
++ node-red-log(to view the recent log output)
++ sudo systemctl enable nodered.service (to autostart Node-RED at every boot)
++ sudo systemctl disable nodered.service(to disable autostart on boot)
+
+For accessing the Node-Red portal using google chrome on the browser, it should be connected to the same network as Raspberry Pi is connected. Open the Node-Red dashboard by typing this address in the browser
 > http://your_Raspberrypi_ip:1880/
+
+### Step 4: Setup Node Red in Raspberry pi 3
+
 Locate and click on Manage Palette once the Node-RED portal has been opened. Click on install to download the necessary nodes. You can install them by searching the name shown below.
 
 + node-red-dashboard
@@ -222,17 +239,6 @@ Node slide
 
 In Inject node set the below properties
 
-Drag and drop the inject node in the flow area. Double click on the inject node to set the below properties:
-Set the interval to 1 seconds and set the repeat to interval for every 3 seconds. This inject node is used to control the interval of sensing data from the sensor.
-
-Similarly, update the configuration shown below in the RPI node. 
-Set the sensor model to be DHT11, the pin number is set to 4, indicating that the 
-DHT11 signal pin will be connected to GPIO4 on the Raspberry Pi.
-Drag and drop the function node and change the name to your preference here temperature. By default below line of code will be present in case it isn’t then add this in function nodes for temperature.
-
-For humidity,
-Add the lines
-msg.payload = msg.humidity (since the dht11 sensor senses both temperature and humidity)
 
 
 
