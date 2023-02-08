@@ -185,30 +185,55 @@ https://www.youtube.com/watch?v=u8bbp79haN4
 
 2. If you already configured raspberry pi without OS installed, with the help of raspberry pi imager you can install the OS: https://www.youtube.com/watch?v=ntaXWS8Lk34
 
-### Step 2: Install Node Red in Raspberry pi 3
-#### a) VNC installation
+#### Step 2: Connect Raspberry pi 3 with DHT11 sensor
+
+The Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects data and sends it to the Raspberry Pi.
+
+Video slide
+
+#### Step 3: Install Node Red in Raspberry pi 3
+1. VNC installation <br/>
 For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal.
 
-To install VNC follow this official [Guide](https://raspberrypi-guide.github.io/networking/connecting-via-VNC)
+To do that install VNC: https://raspberrypi-guide.github.io/networking/connecting-via-VNC
 
-#### b) Nodered installation
+2. Nodered installation <br/>
 To install the Node-Red on Raspberry Pi, Open Terminal and execute the below command.
 
-> bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
 
-+ Once you execute the command, you’ll get a message where you have to press Y and Enter to accept.
-+ Then, you will get another question which is 
-
+Once you execute the command, you’ll get a message where you have to press Y and Enter to accept. Then, you will get another question which is 
 > “Would you like to install Pi-specific nodes?”
+and again you have to press Y and Enter. After confirmation the Node-Red installation will start installing and will take time depending upon the Raspberry Pi configuration. You can start your node-red using the command: **node-red-start**
 
-+ and again you have to press Y and Enter
-+ After confirmation the Node-Red installation will start installing and will take time depending upon the Raspberry Pi configuration.
-+ You can start your node-red using the command: **node-red-start**
-##### Node-red commands
-IMG
-
-+ You can access the Node-Red portal using google chrome on browser which should be connected to the same network as Raspberry Pi is connected. Use the below format to open the Node-Red dashboard.
+**Node-red commands** <br/>
+You can access the Node-Red portal using google chrome on the browser which should be connected to the same network as Raspberry Pi is connected. Use the below format to open the Node-Red dashboard.
 > http://your_Raspberrypi_ip:1880/
+Locate and click on Manage Palette once the Node-RED portal has been opened. Click on install to download the necessary nodes. You can install them by searching the name shown below.
+
++ node-red-dashboard
++ Node-red-contrib-dht-sensor
+
+It will ask for permission to install. Just click on Install.
+
+**Creating flows** <br/>
+Different nodes are listed on the left hand side. Drag and drop the nodes listed below.
+Node slide
+
+In Inject node set the below properties
+
+Drag and drop the inject node in the flow area. Double click on the inject node to set the below properties:
+Set the interval to 1 seconds and set the repeat to interval for every 3 seconds. This inject node is used to control the interval of sensing data from the sensor.
+
+Similarly, update the configuration shown below in the RPI node. 
+Set the sensor model to be DHT11, the pin number is set to 4, indicating that the 
+DHT11 signal pin will be connected to GPIO4 on the Raspberry Pi.
+Drag and drop the function node and change the name to your preference here temperature. By default below line of code will be present in case it isn’t then add this in function nodes for temperature.
+
+For humidity,
+Add the lines
+msg.payload = msg.humidity (since the dht11 sensor senses both temperature and humidity)
+
 
 
 
