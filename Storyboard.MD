@@ -1,3 +1,17 @@
+# SensorThings API Data loading via MQTT
+
+Welcome everyone. Today we will learn about how to use MQTT to load sensor data into SensorThings API.
+
+## Prerequisites
+You must have a basic understanding on all these concepts before moving any further:
++ SensorWeb 
++ SensorThings API entities
++ Internet Protocols
+
+Time taken: mins
+
+Now, I welcome you all for this journey.
+
 ## Chapter 1 : IoT
 Kevin Ashton, a tech pioneer, coined the term "Internet of Things" in 1999. The Internet of Things (IoT) is a term used to refer to a network of physical objects, or "things," that are equipped with sensors, software, and other technologies in order to communicate and exchange data with other systems and devices over the internet. These gadgets include everything from common household items to high-tech industrial tools. We frequently think of IoT devices as smart objects that can interact and exchange data over the Internet. Therefore, every device requires an Internet Protocol address in order to be uniquely identified, just like every home requires a postal address. The introduction of IPv6, which provides an almost infinite supply of IP addresses, appears to reinforce this viewpoint.
 
