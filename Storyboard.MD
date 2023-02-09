@@ -227,13 +227,16 @@ For accessing the Node-Red portal using google chrome on the browser, it should 
 ### Step 4: Setup Node Red in Raspberry pi 3
 
 Locate and click on Manage Palette once the Node-RED portal has been opened. 
+
 ![manage_palatte](https://user-images.githubusercontent.com/94603960/217740799-719df3c0-cf3f-4f5f-aa45-0632e25e7624.png)
+
 Click on install to download the necessary nodes. You can install them by searching the name shown below.
 
 + node-red-dashboard
 + Node-red-contrib-dht-sensor
 
 It will ask for permission to install. Just click on Install.
+
 ![install_node](https://user-images.githubusercontent.com/94603960/217741069-92491d5b-1350-4457-a852-a26d9e85fa81.png)
 
 **Creating flows** <br/>
@@ -282,8 +285,11 @@ The entire flow should look like this:
 ![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
 
 Now, let’s do the same with the humidity parameter. For humidity function json format: use humidity datastreams id and remember how the sensor gives the data.
+
 ![humidity_fn](https://user-images.githubusercontent.com/94603960/217740204-6496d24a-74b5-42fd-ac33-b024eb1e4a27.png)
+
 The flow will look like this
+
 ![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
 
 ### Errors:
