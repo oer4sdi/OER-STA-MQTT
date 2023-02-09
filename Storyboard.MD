@@ -41,10 +41,10 @@ When two networks or more IoT devices from the same or different networks commun
 
 Look into Geek for geeks working of IoT diagram: 
 
-## To sum it up:
+### To sum it up:
 An IoT system is made up of sensors/devices that communicate to the cloud via some form of gateway. Once the data reaches the cloud, software processes it and may decide to take action, such as sending an alert or automatically adjusting the sensors/devices with/without the user's intervention depending on the use case.
 
-## How does IoT fit with the SensorThings API?
+### How does IoT fit with the SensorThings API?
 IoT devices and their data can be connected in an open and simple manner thanks to the OGC (Open Geospatial Consortium) SensorThings API standard. IoT therefore requires spatial interoperability, which is made possible by the SensorThings API. This means that location data must be shared and/or combined with location data from other sources. SensorThings' API is specifically designed for IoT devices with constrained resources. The API uses an efficient and user-friendly RESTful design, JSON encoding, and the MQTT messaging transport. 
 
 > SensorThings API is one of the open international standards in the OGC Sensor Web Enablement (SWE) suite. The OGC SWE standards are a well-integrated set of web service interfaces and data encoding specifications. SWE standards enable developers to discover, access, and use all types of sensors, transducers, and sensor data repositories via the Web.
@@ -79,6 +79,8 @@ A protocol, or set of guidelines, called the Internet Protocol (IP) is used to a
 
 Once at their destination, packets are handled differently depending on which transport protocol is used in conjunction with IP. TCP is the most widely used transport protocol, which governs how data is transmitted and received.. The first version of IP (Internet Protocol) was IPv4. After IPv4, IPv6 came into the market, which has been increasingly used on the public internet since 2006.
 
+### TCP/IP model
+
 <p align="center">
   <img src='svg/TCP.svg' width='650'>
 </p>
@@ -97,8 +99,7 @@ The transport layer is responsible for establishing a secure data connection bet
 4. Application layer <br/>
 The application layer includes all applications that require network communication. It defines standard Internet services and network applications that can be used by anyone. This is where the user usually interacts, such as with email and messaging.
 
-
-## To sum it up:
+### To sum it up:
 TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -162,7 +163,7 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
   <img src='svg/QoS.svg' width='650'>
 </p>
 
-## To sum it up:
+### To sum it up:
 + While HTTP is an excellent choice for transferring website data, it is not a good choice for an IoT application in general.
 + An MQTT broker's job is to filter messages by topic and then distribute them to subscribers.
 + A client can receive these messages by subscribing to the same broker's topic.
@@ -174,7 +175,7 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 Let us first create an IoT device that can sense temperature and humidity. For that we will use Node-Red software.
 
 ### Material Required
-+ Laptop or PC system
++ Laptop or PC system (main computer)
 + Raspberry Pi 3 with Raspbian OS installed
 + DHT11 Sensor
 
