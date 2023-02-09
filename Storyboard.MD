@@ -170,9 +170,8 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 + All clients have the ability to publish (broadcast) and subscribe (receive).
 + Messages are not typically stored by MQTT brokers.
 
-## Chapter 3: Connecting Raspberry Pi with a Sensor using Node Red 
-
-Let us first create an IoT device that can sense temperature and humidity. For that we will use Node Red software.
+## Chapter 3: Connecting Raspberry Pi with a Sensor using Node-Red
+Let us first create an IoT device that can sense temperature and humidity. For that we will use Node-Red software.
 
 ### Material Required
 + Laptop or PC system
@@ -181,7 +180,7 @@ Let us first create an IoT device that can sense temperature and humidity. For t
 
 ### Software Required
 + Rapsberry pi Imager
-+ Node Red
++ Node-Red
 + VNC software
 
 In this tutorial we will use Rapsberry Pi 3 has our microcomputer. You can also use other versions of Raspberry Pi as well.
@@ -189,12 +188,12 @@ In this tutorial we will use Rapsberry Pi 3 has our microcomputer. You can also 
 ### Step 1: How to setup Raspberry Pi 3
 Raspberry Pis are great because they're cheap and small, but connecting one to its own monitor, keyboard, and mouse takes up a lot more space and money. Since we are just trying to program on the Pi with sensors, there's no need to connect it to a display or input devices because you can control the system remotely from your main computer using a VNC or SSH client. This screenless installation is known as a **headless Raspberry Pi** setup. But first let's install the Rasbian OS for your Raspberry Pi.
 
-a) Watch this easy tutorial to setup raspberry pi 3 by M Heidenreich
+a) Watch this easy tutorial to setup Raspberry Pi 3 by M Heidenreich
 
 [![Untitled presentation](https://user-images.githubusercontent.com/94603960/217582355-4291c209-45ca-4e1b-940d-1681f25d21b0.svg)](https://www.youtube.com/watch?v=u8bbp79haN4)
 
-b) You can refer to this Official [guide](https://www.instructables.com/How-to-Setup-Raspberry-Pi-Without-Monitor-and-Keyb/) by Raspberry Pi to setup your Raspberry Pi 3 for indepth understanding. <br/>
-c)If you already configured Raspberry Pi without OS installed, with the help of Raspberry Pi [Imager](https://www.youtube.com/watch?v=ntaXWS8Lk34) you can install the OS
+b) You can refer to this Official [Guide](https://www.instructables.com/How-to-Setup-Raspberry-Pi-Without-Monitor-and-Keyb/) by Raspberry Pi to setup your Raspberry Pi 3 for indepth understanding. <br/>
+c) If you already configured Raspberry Pi without OS installed, with the help of Raspberry Pi [Imager](https://www.youtube.com/watch?v=ntaXWS8Lk34) you can install the OS
 
 ### Step 2: Connect Raspberry Pi 3 with DHT11 Sensor
 
@@ -202,10 +201,11 @@ https://user-images.githubusercontent.com/94603960/217584942-37875d8e-d7ef-4dd5-
 
 Now your Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects the data and sends it to the Raspberry Pi.
 
-### Step 3: Install Node Red in Raspberry pi 3
+### Step 3: Install Node Red in Raspberry Pi 3
 Previously we learned how to access Raspberry Pi using headless setup. This is made possible by VNC and SSH.
 
-1. VNC installation <br/>
+1. VNC installation
+
 For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal. 
 
 Follow this Official guide from VNC on how to [install and connect](https://raspberrypi-guide.github.io/networking/connecting-via-VNC) VNC with Raspberry Pi from your PC.
@@ -214,7 +214,8 @@ You can now view your Raspberry Pi in your main computer.
 
 Node-RED is a powerful tool for developing Internet of Things (IoT) applications, with the goal of making the programming component as simple as possible. It employs visual programming, which enables you to connect nodes, to perform a task.
 
-2. Node-Red installation <br/>
+2. Node-Red installation
+
 To install the Node-Red on Raspberry Pi, Open the Terminal and execute the below command.
 
 ```
@@ -234,7 +235,7 @@ For accessing the Node-Red portal using on the browser in your main computer, it
 
 **add node palette**
 
-### Step 4: Setup Node Red in Raspberry pi 3
+### Step 4: Setup Node-Red in Raspberry Pi 3
 
 Locate and click on Manage Palette once the Node-RED portal has been opened. 
 
@@ -253,21 +254,22 @@ Different nodes are listed on the left hand side. Drag and drop the nodes listed
 
 ![node](https://user-images.githubusercontent.com/94603960/217738635-0c421e0a-7c96-4f1f-951c-63f977a76587.png)
 
-This inject node is used to control the interval of sensing data from the sensor.
+This `inject node` is used to control the interval of sensing data from the sensor.
 
 https://user-images.githubusercontent.com/94603960/217738847-b5bed5bc-13a7-41b9-8ac3-d555befc58b6.mp4
 
-## Chapter 4: Data loading via MQTT with node red tutorial
+## Chapter 4: Data loading via MQTT with Node-Red tutorial
 
-Now that we have a functioning sensor data, let's learn how to load the data to our local SensorThings API (STA) via MQTT. Before any data loading, we need to understand how the STA works. In order to upload the observation, we need to have these entities: things, datastreams, location, observed property, feature of interest. Please see Chapter 4 of our module **'Sensorweb'** to understand the data model in which we used postman to create all of the entities mentioned above. Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
+Now that we have a functioning sensor data, let's learn how to load the data to our local SensorThings API (STA) via MQTT. Before any data loading, we need to understand how the STA works. In order to upload the observation, we need to have these entities: things, datastreams, location, observed property, feature of interest. Please see Chapter 4 of our module **'SensorWeb'** to understand the data model in which we used postman to create all of the entities mentioned above. Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
 
-Let’s connect to the STA broker running in our PC to raspberry pi using node red. 
+Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-Red. 
 
 **Step 1:** start the docker container of STA in your PC. <br/>
 **Step 2:** drag and drop these nodes into the flow region
 + MQTT out
-+ Function node <br/>
-**Step 3:** double click the MQTT out node.
++ Function node
+
+**Step 3:** double click the `MQTT out node`.
 
 ![Untitled presentation (1)](https://user-images.githubusercontent.com/94603960/217739297-189bd183-20e7-4fc9-bb48-19665a36dbba.svg)
 
@@ -275,13 +277,13 @@ Click add
 
 ![mqttnode](https://user-images.githubusercontent.com/94603960/217739547-29db8053-8090-47ba-98da-ed837cbe241c.png)
 
-**Step 4:** for example, I have used tommy as my Client ID. Now, add the topic in the MQTT node (remember that MQTT has a hierarchy based system for its data communication)
+**Step 4:** for example, I have used tommy as my Client ID. Now, add the topic in the `MQTT out node` (remember that MQTT has a hierarchy based system for its data communication)
 
 **Step 5:** specify the Quality of Service(Qos). I have selected QoS 1(for most of the projects, QoS 1 is best suited). Click done.
 
 Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load our sensor data into STA Observations.
 
-**Step 6:** double click the function node. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled. Let’s create the json structure in the function payload.
+**Step 6:** double click the `function node`. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled. Let’s create the json structure in the function payload.
 
 ![Untitled presentation (2)](https://user-images.githubusercontent.com/94603960/217739848-4711a300-b93b-4870-994b-9c627c252bc8.svg)
 
@@ -308,11 +310,11 @@ Now, the flow will look like this
 
 ### Errors:
 
-If you want to stop your MQTT upload, you can do so by disabling the MQTT out node. The flows are saved and you can stop the node red by stopping node-red in the cmd.
+If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
 
 ![mqttnode_disabled](https://user-images.githubusercontent.com/94603960/217740502-207d4a5f-3595-4eb5-a749-aef961e72d25.png)
 
-You have successfully uploaded your sensor data into STA via MQTT using node red. Congratulations for finishing up this practical module
+You have successfully uploaded your sensor data into STA via MQTT using Node-Red. Congratulations for finishing up this practical module
 
 
 
