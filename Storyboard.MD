@@ -226,23 +226,73 @@ For accessing the Node-Red portal using google chrome on the browser, it should 
 
 ### Step 4: Setup Node Red in Raspberry pi 3
 
-Locate and click on Manage Palette once the Node-RED portal has been opened. Click on install to download the necessary nodes. You can install them by searching the name shown below.
+Locate and click on Manage Palette once the Node-RED portal has been opened. 
+![manage_palatte](https://user-images.githubusercontent.com/94603960/217740799-719df3c0-cf3f-4f5f-aa45-0632e25e7624.png)
+Click on install to download the necessary nodes. You can install them by searching the name shown below.
 
 + node-red-dashboard
 + Node-red-contrib-dht-sensor
 
 It will ask for permission to install. Just click on Install.
+![install_node](https://user-images.githubusercontent.com/94603960/217741069-92491d5b-1350-4457-a852-a26d9e85fa81.png)
 
 **Creating flows** <br/>
 Different nodes are listed on the left hand side. Drag and drop the nodes listed below.
-Node slide
 
-In Inject node set the below properties
+![node](https://user-images.githubusercontent.com/94603960/217738635-0c421e0a-7c96-4f1f-951c-63f977a76587.png)
 
+This inject node is used to control the interval of sensing data from the sensor.
 
+https://user-images.githubusercontent.com/94603960/217738847-b5bed5bc-13a7-41b9-8ac3-d555befc58b6.mp4
 
+## Chapter 4: Data loading via MQTT with node red tutorial
 
+Now that we have a functioning sensor data, let's learn how to load the data to a sensorthings api(STA) via MQTT. Before any data loading, we need to understand how the Sensorthings API works. In order to upload the data, we need some entities: things, datastreams, location, observed property, feature of interest. Please look into this chapter of our module to understand the data model where we used postman to create all the entities said above.Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
 
+**Step 1:** Start the docker container of STA.
+**Step 2:** Drag and drop these nodes into the flow region
++ MQTT out
++ Function node
+**Step 3:** Let’s connect to the STA broker running in our system to raspberry pi with node red. To do that double click the MQTT out node.
+
+![Untitled presentation (1)](https://user-images.githubusercontent.com/94603960/217739297-189bd183-20e7-4fc9-bb48-19665a36dbba.svg)
+
+Click add
+
+![mqttnode](https://user-images.githubusercontent.com/94603960/217739547-29db8053-8090-47ba-98da-ed837cbe241c.png)
+
+**Step 4:** Here, for example, I have used tommy as my Client ID. Now, add the topic in the MQTT node (remember that MQTT has a hierarchy based system for its data communication)
+
+**Step 5:** specify the Quality of Service(Qos). I have selected QoS 1(for most of the projects, QoS 1 is best suited). Click done.
+
+Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load our sensor data into STA Observations.
+
+**Step 6:** double click the function node. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled. Let’s create the json structure.
+
+![Untitled presentation (2)](https://user-images.githubusercontent.com/94603960/217739848-4711a300-b93b-4870-994b-9c627c252bc8.svg)
+
+The resultQuality, validTime and parameters are the optional properties of the observation entity. 
+
+**Step 7:** connect the function node with the rpi node and connect the mqtt out node with the function node. Click deploy.
+
+If everything works fine, you can already see your observations getting loaded into our STA.
+
+The entire flow should look like this:
+
+![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
+
+Now, let’s do the same with the humidity parameter. For humidity function json format: use humidity datastreams id and remember how the sensor gives the data.
+![humidity_fn](https://user-images.githubusercontent.com/94603960/217740204-6496d24a-74b5-42fd-ac33-b024eb1e4a27.png)
+The flow will look like this
+![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
+
+### Errors:
+
+If you want to stop your MQTT upload, you can do so by disabling the MQTT out node. The flows are saved and you can stop the node red by stopping node-red in the cmd.
+
+![mqttnode_disabled](https://user-images.githubusercontent.com/94603960/217740502-207d4a5f-3595-4eb5-a749-aef961e72d25.png)
+
+You have successfully uploaded your sensor data into STA via MQTT using node red. Congratulations for finishing up this practical module
 
 
 
