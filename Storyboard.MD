@@ -1,6 +1,6 @@
 # SensorThings API Data loading via MQTT
 
-Welcome everyone. Today we will learn about how to use MQTT to load sensor data into SensorThings API.
+In this OER Module, We will learn about IoT protocols, the concepts behind IoT protocols, Sensorthings API and have a glance at one such service: MQTT.
 
 ## Prerequisites
 You must have a basic understanding on all these concepts before moving any further:
