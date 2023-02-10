@@ -8,6 +8,8 @@ You must have a basic understanding on all these concepts before moving any furt
 + SensorThings API entities
 + Internet Protocols
 
+To know about SensorThings API, we suggest the module 'SensorWeb' Chapter 3 and 4: [SensorThings API](https://github.com/oer4sdi/OER-SensorWeb/blob/main/Storyboard.MD)
+
 Time taken: mins
 
 Now, I welcome you all for this journey.
@@ -65,7 +67,7 @@ IoT devices and their data can be connected in an open and simple manner thanks 
 
 The location-enabled models of the SensorThings API enable sensor feeds from multiple sources to be integrated/aggregated and used more effectively for analytics, modeling, simulations, and so on. IoT application developers can use the OGC SensorThings API to connect to various IoT devices over the Web and create applications without having to worry about the diverse protocols used by various IoT devices, gateways, and services. 
 
-To know more about SensorThings API, look into this module to get an introduction.
+To know more about SensorThings API, look into this module ['SensorThings API'](https://github.com/oer4sdi/OER-SensorWeb/blob/main/Storyboard.MD) to get an introduction.
 
 ## Chapter 2 : Internet Protocols
 
@@ -116,11 +118,8 @@ The application layer includes all applications that require network communicati
 ### To sum it up:
 TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-IoT protocols are essential components of the IoT technology stack. Hardware would be useless without IoT protocols and standards. This is because IoT protocols enable communication—that is, the exchange of data or the sending of commands—among all of those various devices.  IoT protocols come in a variety of varieties that have been developed and optimised for specific uses. The type of IoT protocol required is determined by the system architecture layer through which the data will travel.
-
 ## IoT Data Communication Protocols
+IoT protocols are essential components of the IoT technology stack. Hardware would be useless without IoT protocols and standards. This is because IoT protocols enable communication—that is, the exchange of data or the sending of commands—among all of those various devices.  IoT protocols come in a variety of varieties that have been developed and optimised for specific uses. The type of IoT protocol required is determined by the system architecture layer through which the data will travel.
 
 To connect low-power IoT devices, IoT data protocols are used. They allow users to communicate with hardware without the need for an internet connection. In IoT data protocols and standards, connectivity is accomplished via a wired or cellular network. Here are some examples of IoT data protocols:
 
@@ -194,11 +193,12 @@ Let us first create an IoT device that can sense temperature and humidity. For t
 + DHT11 Sensor
 
 ### Software Required
++ SensorThings API (STA)
 + Rapsberry pi Imager
 + Node-Red
-+ VNC software
++ VNC software(Server and Client)
 
-In this tutorial we will use Rapsberry Pi 3 has our microcomputer. You can also use other versions of Raspberry Pi as well.
+In this tutorial we will use Rapsberry Pi 3 as our microcomputer. You can also use other versions of Raspberry Pi as well.
 
 ### Step 1: How to setup Raspberry Pi 3
 Raspberry Pis are great because they're cheap and small, but connecting one to its own monitor, keyboard, and mouse takes up a lot more space and money. Since we are just trying to program on the Pi with sensors, there's no need to connect it to a display or input devices because you can control the system remotely from your main computer using a VNC or SSH client. This screenless installation is known as a **headless Raspberry Pi** setup. But first let's install the Rasbian OS for your Raspberry Pi.
@@ -221,17 +221,15 @@ Previously we learned how to access Raspberry Pi using headless setup. This is m
 
 1. VNC installation
 
-For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal. 
+For the next step, we will use VNC to install nodered. You can remotely control your Raspberry Pi from any location using VNC (Virtual Network Computing), which eliminates the need for a monitor and lets you control the desktop interface from another computer or mobile device. SSH, on the other hand, only allows access via the terminal. Both your PC and Rapsberry Pi 3 must be connected to the same network.
 
 Follow this Official guide from VNC on how to [install and connect](https://raspberrypi-guide.github.io/networking/connecting-via-VNC) VNC with Raspberry Pi from your PC.
 
-You can now view your Raspberry Pi in your main computer.
-
-Node-RED is a powerful tool for developing Internet of Things (IoT) applications, with the goal of making the programming component as simple as possible. It employs visual programming, which enables you to connect nodes, to perform a task.
+You can now view your Raspberry Pi in your PC.
 
 2. Node-Red installation
 
-To install the Node-Red on Raspberry Pi, Open the Terminal and execute the below command.
+Node-RED is a powerful tool for developing Internet of Things (IoT) applications, with the goal of making the programming component as simple as possible. It employs visual programming, which enables you to connect nodes, to perform a task. To install the Node-Red on Raspberry Pi, Open the Terminal and execute the below command.
 
 ```
 bash <(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
@@ -245,7 +243,7 @@ When the installation is finished, you should see the Node-Red icon in your menu
 + sudo systemctl enable nodered.service (to autostart Node-RED at every boot)
 + sudo systemctl disable nodered.service(to disable autostart on boot)
 
-For accessing the Node-Red portal using on the browser in your main computer, it should be connected to the same network as Raspberry Pi is connected. Open the Node-Red dashboard by typing this address in the browser
+For accessing the Node-Red portal on the browser in your PC, it should be connected to the same network as Raspberry Pi is connected. Open the Node-Red dashboard by typing this address in the browser
 > http://your_Raspberrypi_ip:1880/
 
 **add node palette**
@@ -298,7 +296,7 @@ Click add
 
 Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load our sensor data into STA Observations.
 
-**Step 6:** double click the `function node`. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled. Let’s create the json structure in the function payload.
+**Step 6:** double click the `function node`. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled, let’s create the json structure in the function payload.
 
 ![Untitled presentation (2)](https://user-images.githubusercontent.com/94603960/217739848-4711a300-b93b-4870-994b-9c627c252bc8.svg)
 
@@ -306,16 +304,16 @@ From Observation UML diagram, the resultQuality, validTime and parameters are th
 
 **Step 7:** connect the `function  node` with the `rpi node` and connect the  `mqtt out node` with the `function  node`. Click `deploy`.
 
+The entire flow should look like this:
+
+![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
+
 Now, open the browser of your PC and type this address: 
 > localhost/8081/v1.1
 
 If everything works fine, you can already see your observations getting loaded into your STA.
 
-The entire flow should look like this:
-
-![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
-
-Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
+**Step 8:** Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
 
 ![humidity_fn](https://user-images.githubusercontent.com/94603960/217740204-6496d24a-74b5-42fd-ac33-b024eb1e4a27.png)
 
@@ -323,11 +321,11 @@ Now, the flow will look like this
 
 ![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
 
-### Errors:
-
-If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
+**Step 10:** If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
 
 ![mqttnode_disabled](https://user-images.githubusercontent.com/94603960/217740502-207d4a5f-3595-4eb5-a749-aef961e72d25.png)
+
+**Step 11:** Stop the Node-Red by typing **node-red-stop** or **ctrl+c** in the command prompt.
 
 You have successfully uploaded your sensor data into STA via MQTT using Node-Red. Congratulations for finishing up this practical module
 
