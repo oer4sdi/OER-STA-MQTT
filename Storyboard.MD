@@ -101,7 +101,7 @@ Once at their destination, packets are handled differently depending on which tr
   <img src='svg/TCP.svg' width='650'>
 </p>
 
-The TCP/IP model is split into four distinct layers. Used together, they can also be referred to as a suite of protocols.
+TCP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. The TCP/IP model is split into four distinct layers. Used together, they can also be referred to as a suite of protocols.
 
 1. Datalink layer <br/>
 The datalink layer (also known as the link layer, network interface layer, or physical layer) is responsible for the physical aspects of sending and receiving data via Ethernet cable, wireless network, network interface card, computer device driver, and so on.
@@ -114,9 +114,6 @@ The transport layer is responsible for establishing a secure data connection bet
 
 4. Application layer <br/>
 The application layer includes all applications that require network communication. It defines standard Internet services and network applications that can be used by anyone. This is where the user usually interacts, such as with email and messaging.
-
-### To sum it up:
-TCIP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. TCP/IP refers to a set of rules for transferring data packets in a Local Area Network (LAN) or Wide Area Network (WAN). TCP/IP divides each message into packets, which are then reassembled on the other end. Furthermore, TCP/IP divides the various communication tasks into layers. Each layer serves a distinct purpose. Data passes through four distinct layers before arriving at the other end (as explained above). TCP/IP then traverses these layers backwards in order to reassemble the data and present it to the recipient. The layers' goal is to maintain consistency so that no one hardware or software vendor must handle communication on their own.
 
 ## IoT Data Communication Protocols
 IoT protocols are essential components of the IoT technology stack. Hardware would be useless without IoT protocols and standards. This is because IoT protocols enable communication—that is, the exchange of data or the sending of commands—among all of those various devices.  IoT protocols come in a variety of varieties that have been developed and optimised for specific uses. The type of IoT protocol required is determined by the system architecture layer through which the data will travel.
@@ -177,6 +174,7 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 </p>
 
 ### To sum it up:
++ TCP/IP divides each message into packets, which are then reassembled on the other end.
 + While HTTP is an excellent choice for transferring website data, it is not a good choice for an IoT application in general.
 + An MQTT broker's job is to filter messages by topic and then distribute them to subscribers.
 + A client can receive these messages by subscribing to the same broker's topic.
