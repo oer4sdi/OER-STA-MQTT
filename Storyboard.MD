@@ -343,7 +343,21 @@ If everything works fine, you can already see your observations getting loaded i
 
 **Step 11:** Stop the Node-Red by typing **node-red-stop** or **ctrl+c** in the command prompt.
 
-You have successfully uploaded your sensor data into STA via MQTT using Node-Red. Congratulations for finishing up this practical module
+You have successfully uploaded your sensor data into STA via MQTT using Node-Red.
 
+### Subscribe to MQTT broker
+**Workflow 4:**
 
+Now, let’s subscribe to our uploaded sensor data and see how it works: To do that, drag and drop these nodes
++ MQTT in node
++ Debug node
 
+**Step 12:** Double click MQTT in node and Set the localhost and mention the topic (path) that you want to subscribe to. Click done.
+
+<img src=svg/MQTTin.svg>
+
+**Step 13:** Double click debug node and set the output as in the diagram above. 
+
+**Step 14:**Connect the output port of the MQTT in node with the input port of the debug node. Click deploy.
+
+You can now see the observations in the json format required by STA in the debug window. To stop the observations being uploaded, double click the `MQTT out` node and in the bottom most corner click the enable button once to disable the node. The same goes for all the nodes in the node-red flow panel. Congratulations for finishing up this practical module
