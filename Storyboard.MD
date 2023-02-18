@@ -299,8 +299,8 @@ Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-R
 
 **Step 1:** start the docker container of STA in your PC. <br/>
 **Step 2:** drag and drop these nodes into the flow region
-+ MQTT out
-+ Function node
++ MQTT out: To connect to an MQTT broker
++ Function node: Add any function to transform the sensor data to our desired format in STA
 
 **Step 3:** double click the `MQTT out node`.
 
@@ -320,7 +320,7 @@ Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load
 
 ![Untitled presentation (2)](https://user-images.githubusercontent.com/94603960/217739848-4711a300-b93b-4870-994b-9c627c252bc8.svg)
 
-From Observation UML diagram, the resultQuality, validTime and parameters are the optional properties of the observation entity. 
+Let's look at how we can format the structure: We can get the phenomenon time parameter for the observation from the Javascript built-in library 'Data'; because our sensor senses temperature directly, the result time and phenomenon time are the same. The msg.payload from the `rpi node` would now be the result. Datastream and feature of interest entities from the Observation UML diagram should be included by adding the already formed entities here. The resultQuality, validTime and parameters are the optional properties of the observation entity and shouldn't be necessary here.
 
 **Step 7:** connect the `function  node` with the `rpi node` and connect the  `mqtt out node` with the `function  node`. Click `deploy`.
 
