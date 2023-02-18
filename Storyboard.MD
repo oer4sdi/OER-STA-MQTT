@@ -272,7 +272,7 @@ For accessing the Node-Red portal on the browser in your PC, it should be connec
 
 Locate and click on Manage Palette once the Node-RED portal has been opened. 
 
-![manage_palatte](https://user-images.githubusercontent.com/94603960/217740799-719df3c0-cf3f-4f5f-aa45-0632e25e7624.png)
+<img src=svg/Managepalatte.svg>
 
 Click on install to download the necessary nodes. You can install them by searching the name shown below.
 
@@ -280,12 +280,11 @@ Click on install to download the necessary nodes. You can install them by search
 
 It will ask for permission to install. Just click on Install.
 
-![install_node](https://user-images.githubusercontent.com/94603960/217741069-92491d5b-1350-4457-a852-a26d9e85fa81.png)
-
 **Creating flows** <br/>
 Different nodes are listed on the left hand side. Drag and drop the nodes listed below.
-
-![node](https://user-images.githubusercontent.com/94603960/217738635-0c421e0a-7c96-4f1f-951c-63f977a76587.png)
++ inject node
++ rpi-11 node
++ function node
 
 This `inject node` is used to control the interval of sensing data from the sensor.
 
