@@ -234,7 +234,7 @@ c) If you already configured Raspberry Pi without OS installed, with the help of
 
 https://user-images.githubusercontent.com/94603960/217584942-37875d8e-d7ef-4dd5-a67e-de3b9ecbd9da.mp4
 
-Now your Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects the data and sends it to the Raspberry Pi.
+Look into [GPIO](https://pinout.xyz/pinout/pin7_gpio4) pin connection to know more about other input and output in raspberry pi.Now your Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects the data and sends it to the Raspberry Pi.
 
 ### Step 3: Install Node Red in Raspberry Pi 3
 Previously we learned how to access Raspberry Pi using headless setup. This is made possible by VNC and SSH.
