@@ -303,11 +303,11 @@ Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-R
 
 **Step 3:** double click the `MQTT out node`.
 
-![Untitled presentation (1)](https://user-images.githubusercontent.com/94603960/217739297-189bd183-20e7-4fc9-bb48-19665a36dbba.svg)
+<img src=svg/MQTTout.svg>
 
 Click add
 
-![mqttnode](https://user-images.githubusercontent.com/94603960/217739547-29db8053-8090-47ba-98da-ed837cbe241c.png)
+<img src=svg/MQTTnetwork.svg>
 
 **Step 4:** for example, I have used tommy as my Client ID. Now, add the topic in the `MQTT out node` (remember that MQTT has a hierarchy based system for its data communication)
 
@@ -317,7 +317,7 @@ Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load
 
 **Step 6:** double click the `function node`. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled, let’s create the json structure in the function payload.
 
-![Untitled presentation (2)](https://user-images.githubusercontent.com/94603960/217739848-4711a300-b93b-4870-994b-9c627c252bc8.svg)
+<img src=svg/MQTTfn.svg>
 
 Let's look at how we can format the structure: We can get the phenomenon time parameter for the observation from the Javascript built-in library 'Data'; because our sensor senses temperature directly, the result time and phenomenon time are the same. The msg.payload from the `rpi node` would now be the result. Datastream and feature of interest entities from the Observation UML diagram should be included by adding the already formed entities here. The resultQuality, validTime and parameters are the optional properties of the observation entity and shouldn't be necessary here.
 
