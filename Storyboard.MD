@@ -337,11 +337,9 @@ If everything works fine, you can already see your observations getting loaded i
 
 **Step 8:** Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
 
-![humidity_fn](https://user-images.githubusercontent.com/94603960/217740204-6496d24a-74b5-42fd-ac33-b024eb1e4a27.png)
+<img src=svg/Fn.svg>
 
 **Step 10:** If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
-
-![mqttnode_disabled](https://user-images.githubusercontent.com/94603960/217740502-207d4a5f-3595-4eb5-a749-aef961e72d25.png)
 
 **Step 11:** Stop the Node-Red by typing **node-red-stop** or **ctrl+c** in the command prompt.
 
