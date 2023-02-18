@@ -37,6 +37,10 @@ Individual devices, databases, and gateways that connect multiple networks compr
   <img src='svg/IoT_components.svg' width='650'>
 </p>
 
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/iphone" title="iphone icons">Iphone </a>, <a href="https://www.flaticon.com/free-icons/gateway" title="gateway icons">Gateway </a>, <a href="https://www.flaticon.com/free-icons/cloud-computing" title="cloud computing icons">Cloud computing </a>, <a href="https://www.flaticon.com/free-icons/result" title="result icons">Result </a>, <a href="https://www.flaticon.com/free-icons/globe" title="globe icons">Globe icons </a> created by Freepik- Smashicons - Flaticon
+
+
 This is made possible by the interaction of interconnected components like microcontrollers, sensors, and actuators that transform electrical impulses into pressure, movement, temperature, or other mechanical variables. 
 
 #### 1) Sensor
@@ -92,6 +96,9 @@ A protocol, or set of guidelines, called the Internet Protocol (IP) is used to a
   <img src='svg/IPaddress.svg' width='650'>
 </p>
 
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/laptop" title="laptop icons">Laptop icons created by Vectors Market - Flaticon</a>
+
 > Did you find out your IP Address?
 
 Once at their destination, packets are handled differently depending on which transport protocol is used in conjunction with IP. TCP is the most widely used transport protocol, which governs how data is transmitted and received.. The first version of IP (Internet Protocol) was IPv4. After IPv4, IPv6 came into the market, which has been increasingly used on the public internet since 2006.
@@ -101,6 +108,9 @@ Once at their destination, packets are handled differently depending on which tr
 <p align="center">
   <img src='svg/TCP.svg' width='650'>
 </p>
+
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/laptop" title="laptop icons">Laptop icons created by Vectors Market - Flaticon</a>
 
 TCP/IP is the Internet's backbone: We couldn't surf the Web without these protocols. The TCP/IP model is split into four distinct layers. Used together, they can also be referred to as a suite of protocols.
 
@@ -150,6 +160,11 @@ Since, MQTT Broker handles a lot of clients and are frequently exposed to the in
   <img src='svg/MQTT.svg' width='650'>
 </p>
 
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/temperature" title="temperature icons">Temperature </a>, <a href="https://www.flaticon.com/free-icons/database" title="database icons">Database icons</a> created by Freepik and Smashicons - Flaticon
+
+
+
 ### MQTT Connection
 TCP/IP is the foundation of the MQTT protocol. A TCP/IP stack is required for both the client and the broker.
 The MQTT connection is always established between a single client and the broker. Clients are never directly connected to one another. A MQTT client can be a publisher as well as a subscriber depending on the use case.
@@ -157,6 +172,9 @@ The MQTT connection is always established between a single client and the broker
 <p align="center">
   <img src='svg/MQTT-msg.svg' width='650'>
 </p>
+
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/database" title="database icons">Database</a>, <a href="https://www.flaticon.com/free-icons/laptop" title="laptop icons">Laptop</a> icons created by Smashicons and Vectors Market  - Flaticon
 
 The client sends a CONNECT message to the broker to initiate a connection. A CONNACK message and a status code are returned by the broker. Once the connection is established, the broker maintains it until the client sends a disconnect command or the connection is terminated. As soon as the client connects to a broker, a client can publish/subscribe to a topic. When a client sends a message to a MQTT broker for publication(PUBLISH), the broker reads it, acknowledges it by sending a PUBACK message to the client (based on the QoS Level), and processes it.
 
@@ -173,6 +191,9 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 <p align="center">
   <img src='svg/QoS.svg' width='650'>
 </p>
+
+**Resources** <br/>
+<a href="https://www.flaticon.com/free-icons/database" title="database icons">Database</a>, <a href="https://www.flaticon.com/free-icons/laptop" title="laptop icons">Laptop</a> icons created by Smashicons and Vectors Market  - Flaticon
 
 ### To sum it up:
 + TCP/IP divides each message into packets, which are then reassembled on the other end.
