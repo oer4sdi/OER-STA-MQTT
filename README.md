@@ -21,6 +21,8 @@ This OER module has been developed at the Institute for Geoinformatics, Universi
 
 The OER4SDI project has been recommended by the Digital University NRW and is funded by the Ministry of Culture and Science NRW.
 
+## Icon Attribution
+<a href="https://www.flaticon.com/free-icons/iphone" title="iphone icons">Iphone </a>, <a href="https://www.flaticon.com/free-icons/gateway" title="gateway icons">Gateway </a>, <a href="https://www.flaticon.com/free-icons/cloud-computing" title="cloud computing icons">Cloud computing </a>, <a href="https://www.flaticon.com/free-icons/result" title="result icons">Result </a>, <a href="https://www.flaticon.com/free-icons/laptop" title="laptop icons">Laptop </a>, <a href="https://www.flaticon.com/free-icons/temperature" title="temperature icons">Temperature </a> icons created by Freepik - Flaticon
 
-
+<a href="https://www.flaticon.com/free-icons/globe" title="globe icons">Globe </a>, <a href="https://www.flaticon.com/free-icons/database" title="database icons">Database </a> icons  created by Smashicons - Flaticon
 
