@@ -163,8 +163,6 @@ Since, MQTT Broker handles a lot of clients and are frequently exposed to the in
 **Resources** <br/>
 <a href="https://www.flaticon.com/free-icons/temperature" title="temperature icons">Temperature </a>, <a href="https://www.flaticon.com/free-icons/database" title="database icons">Database icons</a> created by Freepik and Smashicons - Flaticon
 
-
-
 ### MQTT Connection
 TCP/IP is the foundation of the MQTT protocol. A TCP/IP stack is required for both the client and the broker.
 The MQTT connection is always established between a single client and the broker. Clients are never directly connected to one another. A MQTT client can be a publisher as well as a subscriber depending on the use case.
@@ -290,9 +288,15 @@ This `inject node` is used to control the interval of sensing data from the sens
 
 https://user-images.githubusercontent.com/94603960/217738847-b5bed5bc-13a7-41b9-8ac3-d555befc58b6.mp4
 
+**Workflow 1:** <br/>
+![workflow3](https://user-images.githubusercontent.com/94603960/219869118-4de9e25e-aefd-4524-96bc-fbf5d99d8d78.png)
+
 ## Chapter 4: Data loading via MQTT with Node-Red tutorial
 
 Now that we have a functioning sensor data, let's learn how to load the data to our local SensorThings API (STA) via MQTT. Before any data loading, we need to understand how the STA works. In order to upload the observation, we need to have these entities: things, datastreams, location, observed property, feature of interest. Please see Chapter 4 of our module **'SensorWeb'** to understand the data model in which we used postman to create all of the entities mentioned above. Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
+
+**Workflow 2:** <br/>
+![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
 
 Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-Red. 
 
@@ -323,22 +327,17 @@ Let's look at how we can format the structure: We can get the phenomenon time pa
 
 **Step 7:** connect the `function  node` with the `rpi node` and connect the  `mqtt out node` with the `function  node`. Click `deploy`.
 
-The entire flow should look like this:
-
-![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
-
 Now, open the browser of your PC and type this address: 
 > localhost/8081/v1.1
 
 If everything works fine, you can already see your observations getting loaded into your STA.
 
+**Workflow 3:** <br/>
+![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
+
 **Step 8:** Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
 
 ![humidity_fn](https://user-images.githubusercontent.com/94603960/217740204-6496d24a-74b5-42fd-ac33-b024eb1e4a27.png)
-
-Now, the flow will look like this
-
-![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
 
 **Step 10:** If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
 
