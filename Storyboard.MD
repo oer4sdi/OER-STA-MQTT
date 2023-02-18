@@ -230,7 +230,9 @@ c) If you already configured Raspberry Pi without OS installed, with the help of
 
 ### Step 2: Connect Raspberry Pi 3 with DHT11 Sensor
 
-https://user-images.githubusercontent.com/94603960/217584942-37875d8e-d7ef-4dd5-a67e-de3b9ecbd9da.mp4
+https://user-images.githubusercontent.com/94603960/219872144-ca230252-11fa-4555-ac18-8d6ef2c2116c.mp4
+
+[mp4](Video-format/raspbi_pi.mp4)
 
 Look into [GPIO](https://pinout.xyz/pinout/pin7_gpio4) pin connection to know more about other input and output in raspberry pi.Now your Raspberry Pi is linked to the DHT11 temperature and humidity sensor. The sensor collects the data and sends it to the Raspberry Pi.
 
@@ -286,7 +288,9 @@ Different nodes are listed on the left hand side. Drag and drop the nodes listed
 
 This `inject node` is used to control the interval of sensing data from the sensor.
 
-https://user-images.githubusercontent.com/94603960/217738847-b5bed5bc-13a7-41b9-8ac3-d555befc58b6.mp4
+https://user-images.githubusercontent.com/94603960/219872125-40ce8e02-240a-4e0f-abd0-ef5e50cfbf78.mp4
+
+[mp4](Video-format/sensor_reading.mp4)
 
 **Workflow 1:** <br/>
 ![workflow3](https://user-images.githubusercontent.com/94603960/219869118-4de9e25e-aefd-4524-96bc-fbf5d99d8d78.png)
