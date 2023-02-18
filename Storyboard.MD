@@ -1,16 +1,17 @@
 # SensorThings API Data loading via MQTT
 
-In this OER Module, We will learn about IoT protocols, the concepts behind IoT protocols, Sensorthings API and have a glance at one such service: MQTT.
+In this OER Module, We will learn about IoT protocols, the concepts behind IoT protocols, Sensorthings API and have a glance at one such service: MQTT. The module is intended for students (undergraduates and graduates) who want to learn how to use the SensorThings API services. The entire course is designed to gradually increase your understanding of SensorThings API Data Loading methods. If you are interested in the topic, the course is designed to help by providing relevant and ancillary resources. This course is divided into four chapters, the first chapter deeply explains internet protocols, standards and layers followed by IoT data communication standards in the second chapter; the last two of which are dedicated to practical exercises.
+
+After finishing this course, you will be able to answer:
++ What are Internet protocols and layers
++ Explain SensorThings API(STA)
++ How to use Raspberry pi with Sensor
++ How to load sensor data into STA using MQTT services
 
 ## Prerequisites
-You must have a basic understanding on all these concepts before moving any further:
-+ SensorWeb 
-+ SensorThings API entities
-+ Internet Protocols
+Before proceeding with the module, you must have a basic understanding of the following concepts: SensorWeb and SensorThings APIs. We recommend looking into the ['SensorWeb'](https://github.com/oer4sdi/OER-SensorWeb/blob/main/Storyboard.MD) module to gain knowledge of the aforementioned concepts.
 
-To know about SensorThings API, we suggest the module 'SensorWeb' Chapter 3 and 4: [SensorThings API](https://github.com/oer4sdi/OER-SensorWeb/blob/main/Storyboard.MD)
-
-Time taken: mins
+Time taken: 45 mins
 
 Now, I welcome you all for this journey.
 
@@ -183,7 +184,7 @@ MQTT employs topic-based message filtering on the broker. Each message must incl
 + Messages are not typically stored by MQTT brokers.
 
 ## Chapter 3: Connecting Raspberry Pi with a Sensor using Node-Red
-Let us first create an IoT device that can sense temperature and humidity. For that we will use Node-Red software.
+So far we have learned Internet Protocols(IP’s), its standards and layers along with IoT data communication protocols. We also learned about the connection between these standards with SensorThings API(STA). Let’s move to the exciting practical part of this module: Creating an IoT device that can sense temperature and humidity. For that we will use Node Red software.
 
 ### Material Required
 + Laptop or PC system (main computer)
