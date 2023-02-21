@@ -62,6 +62,8 @@ When two networks or more IoT devices from the same or different networks commun
 
 Look into Geek for geeks working of IoT diagram: 
 
+<img src=svg/Workingiot.svg>
+
 ### To sum it up:
 An IoT system is made up of sensors/devices that communicate to the cloud via some form of gateway. Once the data reaches the cloud, software processes it and may decide to take action, such as sending an alert or automatically adjusting the sensors/devices with/without the user's intervention depending on the use case.
 
