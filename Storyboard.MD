@@ -40,13 +40,12 @@ Individual devices, databases, and gateways that connect multiple networks compr
 **Resources** <br/>
 <a href="https://www.flaticon.com/free-icons/iphone" title="iphone icons">Iphone </a>, <a href="https://www.flaticon.com/free-icons/gateway" title="gateway icons">Gateway </a>, <a href="https://www.flaticon.com/free-icons/cloud-computing" title="cloud computing icons">Cloud computing </a>, <a href="https://www.flaticon.com/free-icons/result" title="result icons">Result </a>, <a href="https://www.flaticon.com/free-icons/globe" title="globe icons">Globe icons </a> created by Freepik- Smashicons - Flaticon
 
-
 This is made possible by the interaction of interconnected components like microcontrollers, sensors, and actuators that transform electrical impulses into pressure, movement, temperature, or other mechanical variables. 
 
 #### 1) Sensor
 Humans can understand their surroundings through their five senses; machines require sensors to do so. The sensor on an object measures the state of its surroundings, and the data is processed by the system's microcontroller. This could be a simple temperature reading or a complex video feed. The data is then transmitted to software via the network. Thus, they are the most important data suppliers throughout the IoT.
 
-Quiz: Can you name some sensors?
+> Can you name some sensors?
 
 #### 2) Gateway 
 To send the collected data from the sensor to the cloud, we need a connection. Sensors/devices can be connected to the cloud via cellular, satellite, WiFi, Bluetooth, low-power wide-area networks (LPWAN), or by connecting directly to the internet via ethernet. These are called Gateways. The best connectivity option depends on the IoT application, but they all accomplish the same thing: getting data to the cloud.
@@ -62,7 +61,9 @@ When two networks or more IoT devices from the same or different networks commun
 
 Look into Geek for geeks working of IoT diagram: 
 
-<img src=svg/Workingiot.svg>
+<p align="center">
+  <img src='svg/Workingiot.svg' width='650'>
+</p>
 
 ### To sum it up:
 An IoT system is made up of sensors/devices that communicate to the cloud via some form of gateway. Once the data reaches the cloud, software processes it and may decide to take action, such as sending an alert or automatically adjusting the sensors/devices with/without the user's intervention depending on the use case.
@@ -274,15 +275,19 @@ For accessing the Node-Red portal on the browser in your PC, it should be connec
 
 Locate and click on Manage Palette once the Node-RED portal has been opened. 
 
-<img src=svg/Managepalatte.svg>
-
+<p align="center">
+  <img src='svg/Managepalatte.svg' width='650'>
+</p>
+  
 Click on install to download the necessary nodes. You can install them by searching the name shown below.
 
 + Node-red-contrib-dht-sensor
 
 It will ask for permission to install. Just click on Install.
 
-**Creating flows** <br/>
+#### Workflow 1: <br/>
+![workflow3](https://user-images.githubusercontent.com/94603960/219869118-4de9e25e-aefd-4524-96bc-fbf5d99d8d78.png)
+
 Different nodes are listed on the left hand side. Drag and drop the nodes listed below.
 + inject node
 + rpi-11 node
@@ -294,14 +299,11 @@ https://user-images.githubusercontent.com/94603960/219872125-40ce8e02-240a-4e0f-
 
 [mp4](Video-format/sensor_reading.mp4)
 
-**Workflow 1:** <br/>
-![workflow3](https://user-images.githubusercontent.com/94603960/219869118-4de9e25e-aefd-4524-96bc-fbf5d99d8d78.png)
-
 ## Chapter 4: Data loading via MQTT with Node-Red tutorial
 
 Now that we have a functioning sensor data, let's learn how to load the data to our local SensorThings API (STA) via MQTT. Before any data loading, we need to understand how the STA works. In order to upload the observation, we need to have these entities: things, datastreams, location, observed property, feature of interest. Please see Chapter 4 of our module **'SensorWeb'** to understand the data model in which we used postman to create all of the entities mentioned above. Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
 
-**Workflow 2:** <br/>
+#### Workflow 2:
 ![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
 
 Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-Red. 
@@ -313,11 +315,15 @@ Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-R
 
 **Step 3:** double click the `MQTT out node`.
 
-<img src=svg/MQTTout.svg>
+<p align="center">
+  <img src='svg/MQTTout.svg' width='650'>
+</p>
 
 Click add
 
-<img src=svg/MQTTnetwork.svg>
+<p align="center">
+  <img src='svg/MQTTnetwork.svg' width='650'>
+</p>
 
 **Step 4:** for example, I have used tommy as my Client ID. Now, add the topic in the `MQTT out node` (remember that MQTT has a hierarchy based system for its data communication)
 
@@ -327,7 +333,9 @@ Whew, that's a hefty amount of work. Pat yourself in the back. Now, let’s load
 
 **Step 6:** double click the `function node`. Edit the name with your choice of label(here, temperature). Since, the STA Observation entity has some mandatory properties to be filled, let’s create the json structure in the function payload.
 
-<img src=svg/MQTTfn.svg>
+<p align="center">
+  <img src='svg/MQTTfn.svg' width='650'>
+</p>
 
 Let's look at how we can format the structure: We can get the phenomenon time parameter for the observation from the Javascript built-in library 'Data'; because our sensor senses temperature directly, the result time and phenomenon time are the same. The msg.payload from the `rpi node` would now be the result. Datastream and feature of interest entities from the Observation UML diagram should be included by adding the already formed entities here. The resultQuality, validTime and parameters are the optional properties of the observation entity and shouldn't be necessary here.
 
@@ -338,12 +346,14 @@ Now, open the browser of your PC and type this address:
 
 If everything works fine, you can already see your observations getting loaded into your STA.
 
-**Workflow 3:** <br/>
+#### Workflow 3:
 ![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
 
 **Step 8:** Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
 
-<img src=svg/Fn.svg>
+<p align="center">
+  <img src='svg/Fn.svg' width='650'>
+</p>
 
 **Step 10:** If you want to stop your MQTT upload, you can do so by disabling the `MQTT out node`. The flows are saved and you can stop the Node-Red by stopping Node-Red in the cmd.
 
@@ -351,19 +361,20 @@ If everything works fine, you can already see your observations getting loaded i
 
 You have successfully uploaded your sensor data into STA via MQTT using Node-Red.
 
-### Subscribe to MQTT broker
-**Workflow 4:**
+#### Workflow 4:
 
-Now, let’s subscribe to our uploaded sensor data and see how it works: To do that, drag and drop these nodes
+So far we have learned how to connect to an MQTT broker and publish our sensor data. Now, let’s subscribe to our uploaded sensor data and see how it works: To do that, drag and drop these nodes <br/>
 + MQTT in node
 + Debug node
 
 **Step 12:** Double click MQTT in node and Set the localhost and mention the topic (path) that you want to subscribe to. Click done.
 
-<img src=svg/MQTTin.svg>
+<p align="center">
+  <img src='svg/MQTTin.svg' width='650'>
+</p>
 
 **Step 13:** Double click debug node and set the output as in the diagram above. 
 
-**Step 14:**Connect the output port of the MQTT in node with the input port of the debug node. Click deploy.
+**Step 14:** Connect the output port of the MQTT in node with the input port of the debug node. Click deploy.
 
 You can now see the observations in the json format required by STA in the debug window. To stop the observations being uploaded, double click the `MQTT out` node and in the bottom most corner click the enable button once to disable the node. The same goes for all the nodes in the node-red flow panel. Congratulations for finishing up this practical module
