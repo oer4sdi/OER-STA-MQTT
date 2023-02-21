@@ -286,7 +286,9 @@ Click on install to download the necessary nodes. You can install them by search
 It will ask for permission to install. Just click on Install.
 
 #### Workflow 1: <br/>
-![workflow3](https://user-images.githubusercontent.com/94603960/219869118-4de9e25e-aefd-4524-96bc-fbf5d99d8d78.png)
+<p align="center">
+  <img src='svg/Workflow1.svg' height='350'>
+</p>
 
 Different nodes are listed on the left hand side. Drag and drop the nodes listed below.
 + inject node
@@ -304,7 +306,9 @@ https://user-images.githubusercontent.com/94603960/219872125-40ce8e02-240a-4e0f-
 Now that we have a functioning sensor data, let's learn how to load the data to our local SensorThings API (STA) via MQTT. Before any data loading, we need to understand how the STA works. In order to upload the observation, we need to have these entities: things, datastreams, location, observed property, feature of interest. Please see Chapter 4 of our module **'SensorWeb'** to understand the data model in which we used postman to create all of the entities mentioned above. Since Nodered has an inbuilt MQTT client, it’s easier to connect with the MQTT broker of STA. 
 
 #### Workflow 2:
-![workflow1](https://user-images.githubusercontent.com/94603960/217740006-e0e50a02-2de3-4dd3-8c31-0eceb2bbf28b.png)
+<p align="center">
+  <img src='svg/Workflow2.svg' height='350'>
+</p>
 
 Let’s connect to the STA broker running in our PC to Raspberry Pi using Node-Red. 
 
@@ -347,7 +351,9 @@ Now, open the browser of your PC and type this address:
 If everything works fine, you can already see your observations getting loaded into your STA.
 
 #### Workflow 3:
-![workflow2](https://user-images.githubusercontent.com/94603960/217740346-23295d74-dce5-4465-982d-44fefab042ad.png)
+<p align="center">
+  <img src='svg/Workflow3.svg' height='350'>
+</p>
 
 **Step 8:** Now, let’s do the same with humidity. For the humidity `function  node` json format: use `humidity datastreams id `and remember how the sensor gives the data(see the debug message from the sensor).
 
