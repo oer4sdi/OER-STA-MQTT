@@ -1,0 +1,62 @@
+services:
+  database:
+    image: postgis/postgis:12-master
+    restart: on-failure
+    environment:
+      POSTGRES_DB: sta
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      ALLOW_IP_RANGE: 0.0.0.0/0
+      POSTGRES_MULTIPLE_EXTENSIONS: postgis
+    ports:
+      - 5000:5432
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+    networks:
+      - sensorweb-net
+
+  sta:
+    image: 52north/sensorweb-server-sta:latest
+    ports:
+      - 8081:8081
+      - 1883:1883
+      - 8883:8883
+    environment:
+      LOGGING_LEVEL_ROOT: INFO
+      LOGGING_LEVEL_ORG_N52: TRACE
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/sta
+      SPRING_JPA_PROPERTIES_HIBERNATE_HBM2DDL_AUTO: update
+      MQTT_BROKER_PLAINTCP_ENABLED: "true"
+      MQTT_BROKER_WEBSOCKET_ENABLED: "true"
+      MQTT_BROKER_PERSISTENCE_ENABLED: "false"
+      MQTT_BROKER_CREDENTIALS: ""
+      SERVER_ROOTURL: http://sta:8081/v1.1/
+      SERVER_SERVLET_CONTEXT_PATH: /v1.1
+      SERVER_FEATURE_UPDATEFOI: "false"
+      SERVER_FEATURE_MQTTPUBLISHTOPICS: Observations
+      SERVER_FEATURE_VARIABLEENCODINGTYPE: "false"
+      SERVER_FEATURE_ISMOBILE: "false"
+    restart: always
+    depends_on:
+      - database
+    networks:
+      - sensorweb-net
+
+  helgoland:
+    image: 52north/helgoland
+    container_name: helgoland
+    ports:
+      - "80:80"
+    volumes:
+      - ./app-config.json:/usr/share/nginx/html/assets/app-config.json
+    restart: always
+    networks:
+      - sensorweb-net
+
+volumes:
+  postgis_data:
+    driver: local
+
+networks:
+  sensorweb-net:
+    driver: bridge
