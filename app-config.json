@@ -1,0 +1,27 @@
+{
+  "defaultService": {
+      "serviceId": "1",
+      "apiUrl": ""
+  },
+  "datasetApis": [
+      {
+          "name": "fluggs.wupperverband.de",
+          "url": "https://fluggs.wupperverband.de/sws5/api/"
+      },
+      {
+        "name": "Local SensorThings API",
+        "url": ""
+      }
+  ],
+  "languages": [
+      {
+          "label": "Deutsch",
+          "code": "de"
+      },
+      {
+          "label": "English",
+          "code": "en"
+      }
+  ],
+  "supportTimeseriesSymbols": true
+}
