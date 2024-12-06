@@ -4,20 +4,19 @@
 #include <time.h>
 #include "DHT.h"
 
-
 #define DPIN 4              // Pin for DHT sensor (GPIO number) D2
 #define DTYPE DHT11         // DHT11 sensor type
 DHT dht(DPIN, DTYPE);
-
 
 // WiFi connection details
 const char* ssid = "ENTER_YOUR_WIFI_SSID";
 const char* password = "ENTER_YOUR_WIFI_PASSWORD";
 
-// MQTT Broker Connection Details for SensorThings API
-const char* mqtt_server = "ENTER_YOUR_IP_ADDRESS";
-const int mqtt_port = 1883;
-const char* mqtt_topic = "v1.1/Datastreams(temperature_readings_1)/Observations";
+// MQTT Connection Details for SensorThings API
+const char* sta_server = "ENTER_YOUR_IP_ADDRESS";
+const int sta_port = 1883;
+const char* temp_topic = "v1.1/Datastreams(temperature_readings_1)/Observations";
+const char* hum_topic = "v1.1/Datastreams(humidity_readings_1)/Observations";
 
 // WiFi and MQTT client setup
 WiFiClient espClient;
@@ -36,7 +35,7 @@ void setup() {
   Serial.println("\nWiFi connected");
 
   // Set MQTT server for SensorThings API
-  client.setServer(mqtt_server, mqtt_port);
+  client.setServer(sta_server, sta_port);
 
   // Configure time with NTP servers
   configTime(3600, 0, "pool.ntp.org", "time.nist.gov");
@@ -70,26 +69,42 @@ String getISO8601Time() {
   return String(isoTime);
 }
 
-// Publish to SensorThings API using MQTT with timestamps
-void publishToSensorThings(float tempC) {
+// Publish temperature readings to SensorThings API
+void publishTemperature(float tempC) {
   if (!client.connected()) {
     reconnect();
   }
 
-  // Obtain phenomenonTime and resultTime in ISO 8601 format
   String phenomenonTime = getISO8601Time();
   String resultTime = phenomenonTime;
 
-  // Construct JSON payload with timestamps
   String jsonPayload = "{";
   jsonPayload += "\"phenomenonTime\": \"" + phenomenonTime + "\",";
   jsonPayload += "\"resultTime\": \"" + resultTime + "\",";
   jsonPayload += "\"result\": " + String(tempC);
   jsonPayload += "}";
 
-  // Publish JSON payload to SensorThings API MQTT topic
   Serial.print(client.state());
-  client.publish(mqtt_topic, jsonPayload.c_str());
+  client.publish(temp_topic, jsonPayload.c_str());
+}
+
+// Publish humidity readings to SensorThings API
+void publishHumidity(float hum) {
+  if (!client.connected()) {
+    reconnect();
+  }
+
+  String phenomenonTime = getISO8601Time();
+  String resultTime = phenomenonTime;
+
+  String jsonPayload = "{";
+  jsonPayload += "\"phenomenonTime\": \"" + phenomenonTime + "\",";
+  jsonPayload += "\"resultTime\": \"" + resultTime + "\",";
+  jsonPayload += "\"result\": " + String(hum);
+  jsonPayload += "}";
+
+  Serial.print(client.state());
+  client.publish(hum_topic, jsonPayload.c_str());
 }
 
 void loop() {
@@ -98,22 +113,20 @@ void loop() {
   }
   client.loop();
 
-  // Read temperature and humidity
   float tempC = dht.readTemperature(false);
-  float tempF = dht.readTemperature(true);   // Temperature in Fahrenheit
   float hum = dht.readHumidity();
 
-  if (!isnan(tempC) || !isnan(tempF) || !isnan(hum)) {
+  if (!isnan(tempC) && !isnan(hum)) {
     Serial.print("Temp: ");
     Serial.print(tempC);
-    Serial.println(" C, ");
-    Serial.print(tempF);
-    Serial.print(" F, Hum: ");
+    Serial.println(" C");
+    Serial.print("Humidity: ");
     Serial.print(hum);
-    Serial.println("%");
+    Serial.println(" %");
 
-    // Publish temperature data to SensorThings API with timestamps
-    publishToSensorThings(tempC);
+    // Publish both temperature and humidity data
+    publishTemperature(tempC);
+    publishHumidity(hum);
   } else {
     Serial.println("Failed to read from DHT sensor!");
   }
