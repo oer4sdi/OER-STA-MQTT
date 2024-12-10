@@ -1,16 +1,12 @@
 {
   "defaultService": {
       "serviceId": "1",
-      "apiUrl": ""
+      "apiUrl": "http://localhost:8081/v1.1/"
   },
   "datasetApis": [
       {
-          "name": "fluggs.wupperverband.de",
-          "url": "https://fluggs.wupperverband.de/sws5/api/"
-      },
-      {
         "name": "Local SensorThings API",
-        "url": ""
+        "url": "http://localhost:8081/v1.1/"
       }
   ],
   "languages": [
